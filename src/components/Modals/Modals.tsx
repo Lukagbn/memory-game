@@ -1,11 +1,16 @@
-import React from "react";
 import StartGame from "./StartGame/StartGame";
 import EndGame from "./EndGame/EndGame";
-import "./Modals.sass";
 
 function Modals() {
-  const user: boolean = true;
-  return <div className="modals">{user ? <StartGame /> : <EndGame />}</div>;
+  const user: number | null = 1;
+  switch (user) {
+    case 1:
+      return <StartGame />;
+    case 2:
+      return <EndGame />;
+    case null:
+      return;
+  }
 }
 
 export default Modals;
