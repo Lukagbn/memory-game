@@ -1,15 +1,19 @@
-import StartGame from "./StartGame/StartGame";
+import StartGame, { type GameSettings } from "./StartGame/StartGame";
 import EndGame from "./EndGame/EndGame";
 
-function Modals() {
-  const user: number | null = 1;
-  switch (user) {
-    case 1:
-      return <StartGame />;
-    case 2:
+interface ModalsProps {
+  activeModal: "start" | "end" | null;
+  handleStartData: (data: GameSettings) => void;
+}
+
+function Modals({ activeModal, handleStartData }: ModalsProps) {
+  switch (activeModal) {
+    case "start":
+      return <StartGame sendDataToParent={handleStartData} />;
+    case "end":
       return <EndGame />;
     case null:
-      return;
+      return null;
   }
 }
 

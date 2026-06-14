@@ -1,0 +1,31 @@
+$circle-primary-color-bg: #304859
+$circle-primary-hover-color-bg: #6395B8
+$circle-fipped-color-bg: #BCCED9
+$text-primary-color: #F2F2F2
+
+.circleContainer
+    display: grid
+    grid-template-columns: repeat(4,1fr) 
+    gap: 20px
+    max-width: 532px
+    height: 532px
+    margin: auto
+    .circle
+        width: 118px
+        height: 118px
+        border-radius: 50%
+        display: flex
+        align-items: center
+        justify-content: center
+        background-color: $circle-primary-color-bg
+        color: $text-primary-color
+        font-size: 56px
+        cursor: pointer
+        user-select: none
+        transition: .4s ease-in-out
+        &:hover
+            background-color:$circle-primary-hover-color-bg
+    .active
+        background-color: $circle-fipped-color-bg
+
+
