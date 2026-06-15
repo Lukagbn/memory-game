@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./App.sass";
 import Modals from "./components/Modals/Modals";
 import type { GameSettings } from "./components/Modals/StartGame/StartGame";
@@ -23,6 +23,7 @@ function App() {
     setEndGame(data);
     setCurrentModal("end");
   }
+  console.log(endGame);
   return (
     <>
       <Navbar />
