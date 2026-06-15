@@ -22,6 +22,7 @@ function App() {
   function handleFinishedGame(data: boolean) {
     setEndGame(data);
     setCurrentModal("end");
+    return "dasd";
   }
   console.log(endGame);
   return (
