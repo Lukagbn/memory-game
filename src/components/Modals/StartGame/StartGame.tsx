@@ -9,9 +9,10 @@ export type GameSettings = {
 
 interface StartGameProps {
   sendDataToParent: (data: GameSettings) => void;
+  setStartTimer: (data: boolean) => void;
 }
 
-function StartGame({ sendDataToParent }: StartGameProps) {
+function StartGame({ sendDataToParent, setStartTimer }: StartGameProps) {
   const [theme, setTheme] = useState<"numbers" | "icons">("numbers");
   const [players, setPlayers] = useState<1 | 2 | 3 | 4>(1);
   const [grid, setGrid] = useState<"4X4" | "6X6">("4X4");
@@ -92,6 +93,7 @@ function StartGame({ sendDataToParent }: StartGameProps) {
                 grid: grid,
               };
               sendDataToParent(gameSettings);
+              setStartTimer(true);
             }}
             className="startBtn"
           >

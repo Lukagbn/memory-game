@@ -1,9 +1,6 @@
 :root {
   --font-primary: "Atkinson Hyperlegible", sans-serif;
   --bg-color: #ffffff;
-  --text-color: #213547;
-  --link-color: #646cff;
-  --link-hover: #535bf2;
 }
 *,
 *::before,
@@ -32,7 +29,11 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 body {
   background-color: var(--bg-color);
   color: var(--text-color);

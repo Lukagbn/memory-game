@@ -1,15 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.sass";
 import Modals from "./components/Modals/Modals";
 import type { GameSettings } from "./components/Modals/StartGame/StartGame";
 import Circle from "./components/Circle/Circle";
+import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const [currentModal, setCurrentModal] = useState<"start" | "end" | null>(
     "start",
   );
+  const [startTimer, setStartTimer] = useState(false);
   const [gameSettings, setGameSettings] = useState<GameSettings | null>();
-  const [endGame, setEndGame] = useState<boolean>(false);
+  const [moves, setMoves] = useState<number>(0);
+  const [endGame, setEndGame] = useState<boolean>();
   function handleGameSettings(data: GameSettings) {
     console.log("game settings", data);
     setGameSettings(data);
@@ -20,10 +24,24 @@ function App() {
     setCurrentModal("end");
   }
   return (
-    <main>
-      <Circle finished={handleFinishedGame} />
-      <Modals activeModal={currentModal} handleStartData={handleGameSettings} />
-    </main>
+    <>
+      <Navbar />
+      <main>
+        {gameSettings && (
+          <Circle
+            gameSettings={gameSettings}
+            finished={handleFinishedGame}
+            setMoves={setMoves}
+          />
+        )}
+        <Modals
+          activeModal={currentModal}
+          handleStartData={handleGameSettings}
+          setStartTimer={setStartTimer}
+        />
+      </main>
+      <Footer startTimer={startTimer} moves={moves} />
+    </>
   );
 }
 
